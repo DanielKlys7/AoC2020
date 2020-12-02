@@ -1,4 +1,4 @@
-import { input } from "./day01_01_input.js";
+import { input } from "./day01.input.js";
 import R from "ramda";
 
 const config = {
