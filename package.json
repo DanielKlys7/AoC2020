@@ -9,8 +9,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
+    "@types/ramda": "^0.27.32",
     "ramda": "^0.27.1"
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.0",
+    "typescript": "^4.1.2"
   }
 }
