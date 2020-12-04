@@ -2,10 +2,8 @@ import { pipe } from "ramda";
 
 import { input } from "./day04.input";
 
-//format
-
 interface Passport {
-  [k: number]: string;
+  [k: string]: string;
 }
 
 const formatData = (input: string) =>
@@ -18,8 +16,6 @@ const formatData = (input: string) =>
 const makePassportObject = (arrayToFormat: string[][][]) =>
   arrayToFormat.map((i: string[][]) => Object.fromEntries(i));
 
-//filter by required properties
-
 const requiredProperties = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
 
 const filterToRequiredProperties = (requiredProperties: string[]) => (
@@ -30,8 +26,6 @@ const filterToRequiredProperties = (requiredProperties: string[]) => (
       singlePassport.hasOwnProperty(singleProperty)
     )
   );
-
-//validate
 
 interface Validators {
   [k: string]: (i: string) => boolean;
@@ -65,14 +59,12 @@ const validateProperties = (validators: Validators) => (
   Passports: Passport[]
 ) =>
   Passports.filter((singlePassport: Passport) => {
-    const arrayOfBooleans = Object.keys(singlePassport).map((singleKey: any) =>
+    const arrayOfBooleans = Object.keys(singlePassport).map((singleKey) =>
       validators[singleKey](singlePassport[singleKey])
     );
 
     return !arrayOfBooleans.includes(false);
   });
-
-//compose
 
 const finalFunc = pipe(
   formatData,
